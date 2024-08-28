@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissor</title>
+</head>
+
+<body>
+  <p>Rock Paper Scissor</p>
+
+  <!--Button ROCK-->
+  <button onclick="
+controlResult('rock',pickComputerMove());
+  ">Rock</button>
+
+  <!--Button PAPER-->
+  <button onclick="
+    controlResult('paper',pickComputerMove());
+    ">Paper</button>
+
+  <!--Button SCISSOR-->
+  <button onclick="
+    controlResult('scissor',pickComputerMove());
+    ">Scissor</button>
+
+  <!--Button RESET-->
+  <button onclick="
+    score.wins =0;
+    score.losses=0;
+    score.ties=0;
+    localStorage.removeItem('score');
+    updateScoreElemnent('','');
+    ">Reset Score</button>
+
+  <p class="js-result"> </p>
+  <p class="js-move"> </p>
+  <p class="js-score"> </p>
+  <script>
+
+    // Recupera il valore della chiave 'score' dal localStorage e lo converte da stringa JSON a oggetto JavaScript
+    let score = JSON.parse(localStorage.getItem('score'))
+      // Se il valore recuperato è null o undefined (ossia, non esiste ancora nel localStorage)
+      || { wins: 0, losses: 0, ties: 0 }; // Assegna un oggetto predefinito con contatori iniziali a zero
+
+    //L'operatore logico || ritorna il primo operando che è vero (truthy). Se il primo operando è falso (falsy), ritorna il secondo operando.
+    updateScoreElemnent('', '');
+
+    // FUNC update score html
+    function updateScoreElemnent(result, computerMove, userChoice) {
+
+      document.querySelector('.js-result').innerHTML = result
+      document.querySelector('.js-move').innerHTML = ` Computer: ${computerMove}. Player: ${userChoice}.`
+      document.querySelector('.js-score')
+        .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`
+
+    }
+
+
+    // FUNC Scleta PC
+    function pickComputerMove() {
+      const randomNumber = Math.random();
+      if (randomNumber >= 0 && randomNumber < 1 / 3) {
+        computerMove = 'rock';
+      } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+        computerMove = 'paper';
+      } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+        computerMove = 'scissor';
+      }
+      return computerMove;
+    }
+
+    // FUNC controllo e risultato
+    function controlResult(userChoice, computerMove) {
+      let result = '';
+      if (computerMove === userChoice) {
+        result = 'tie.';
+        score.ties++;
+      } else if (computerMove === 'rock' && userChoice === 'scissor' ||
+        computerMove === 'paper' && userChoice === 'rock' ||
+        computerMove === 'scissor' && userChoice === 'paper') {
+        result = 'you lose.';
+        score.losses++;
+      } else if (userChoice === 'rock' && computerMove === 'scissor' ||
+        userChoice === 'paper' && computerMove === 'rock' ||
+        userChoice === 'scissor' && computerMove === 'paper') {
+        result = 'you win.';
+        score.wins++;
+        console.log(score);
+      }
+      updateScoreElemnent(result, computerMove, userChoice);
+
+      localStorage.setItem('score', JSON.stringify(score)) // il localstore accetta solo string
+
+
+    }
+  </script>
+</body>
+
+</html>

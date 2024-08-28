@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Booleans</title>
+</head>
+
+<body>
+  <script>
+    true
+    false
+
+    console.log(3 < 5 - 5); // Le operazioni matematiche le fa prima
+
+    console.log('5.00' == 5); // il == converte il numero e poi fa il controllo
+    console.log('5.00' === 5); // Fa il controllo senza conversione
+    console.log('5.00' !== 5);
+
+    if (true) {
+      console.log('hello');
+    } else {
+      console.log('else');
+    }
+
+    const age = 33;
+
+    if (age >= 16) {
+      console.log('you can drive');
+      console.log('congratulation');
+    }
+    else if (age >= 14) {
+      console.log('Almost there!');
+    }
+    else
+      console.log('you can not drive');
+
+
+    /*  falsy value
+    false
+    0
+    ''
+    NaN
+    undefined
+    null
+    */
+    const cartQuantity = 5
+
+    if (cartQuantity) {
+      console.log('cart has products');
+    }
+
+    if (!0) {
+      console.log('se non è zero');
+    }
+
+    console.log('text' / 5); // risulta NaN
+
+    let variable5;
+    console.log(variable5); // undefined. Funziona solo con let
+    const variable6 = undefined; // per il const devo dichiararlo
+
+    // TERNARIUM OPERATOR
+
+    true ? 'si' : 'no' // condizione ? vero : falso
+
+    // GUARD OPERATOR
+
+    false && console.log('hello');
+
+    const message2 = false && 'hello';
+    console.log(message2); // false
+
+    message2 = 5 && 'hello';
+    console.log(message2); // hello
+
+    const currency = undefined || 'USD';
+    console.log(currency); // USD
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>dom</title>
+</head>
+
+<body>
+  <button>hello</button>
+  <button class="js-button">second buttun</button>
+
+  <script>
+
+    console.log(document.querySelector('button').innerHTML); // prende button e lo ma solo la parte html (no tag)
+    console.log(document.querySelector('body')); // prende tt il body e lo trasforma in obj
+
+    document.querySelector('button')
+      .innerHTML = 'Change'; // cambia nome al bottone
+
+    console.log(document.querySelector('.js-button')); // prende specifica classe
+    const buttonElement = document.querySelector('.js-button');
+    console.log(buttonElement);
+
+    /*
+
+    console.log(document.title);
+    document.title = 'change';
+
+    console.log(document.body); // prende tt il body e lo fa oggetto
+    console.log(typeof document.body);
+
+    console.log(document.body.innerHTML); // trasforma in HTML
+    document.body.innerHTML = '<button>good job</button>';
+    */
+
+
+    /*
+    document.body.innerHTML = 'hello'
+    document.title = 'Good job"';
+    */
+
+
+  </script>
+</body>
+
+</html>

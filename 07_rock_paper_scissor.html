@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissor</title>
+</head>
+
+<body>
+  <p>Rock Paper Scissor</p>
+
+  <!--Button ROCK-->
+  <button onclick="
+userChoice = 'rock';
+controlResult(userChoice,pickComputerMove());
+  ">Rock</button>
+
+  <!--Button PAPER-->
+  <button onclick="
+  userChoice = 'paper';
+  controlResult(userChoice,pickComputerMove());
+    ">Paper</button>
+
+  <!--Button SCISSOR-->
+  <button onclick="
+  userChoice = 'scissor';
+  controlResult(userChoice,pickComputerMove());
+    ">Scissor</button>
+
+  <script>
+    let userChoice = '';
+    let computerMove;
+
+    // FUNC Scleta PC
+    function pickComputerMove() {
+      const randomNumber = Math.random();
+      if (randomNumber >= 0 && randomNumber < 1 / 3) {
+        computerMove = 'rock';
+      } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+        computerMove = 'paper';
+      } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+        computerMove = 'scissor';
+      }
+      return computerMove;
+    }
+
+    // FUNC controllo e risultato
+    function controlResult(userChoice, computerMove) {
+      let result = '';
+      if (computerMove === userChoice) {
+        result = 'tie.';
+      } else if (computerMove === 'rock' && userChoice === 'scissor' ||
+        computerMove === 'paper' && userChoice === 'rock' ||
+        computerMove === 'scissor' && userChoice === 'paper') {
+        result = 'you lose.';
+      } else if (userChoice === 'rock' && computerMove === 'scissor' ||
+        userChoice === 'paper' && computerMove === 'rock' ||
+        userChoice === 'scissor' && computerMove === 'paper') {
+        result = 'you win.';
+      }
+      alert(`you picked ${userChoice}. Computer picked ${computerMove}. ${result}`);
+    }
+  </script>
+</body>
+
+</html>

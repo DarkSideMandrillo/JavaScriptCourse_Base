@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Object</title>
+</head>
+
+<body>
+  <script>
+    /*
+    const product = {
+      name: 'soks',
+      price: 1090
+    };
+    console.log(product);
+    console.log(product.name);
+
+    product.name = 'cotton soks';
+    console.log(product.name);
+
+    product.newProperty = true; // add 
+    console.log(product);
+
+    delete product.newProperty;
+    console.log(product);
+    */
+
+
+    /*
+    const product2 = {
+      name: 'shirt',
+      ['delivery-time']: '1 day',
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      fun: function foo() {
+        console.log('function inside obj');
+      }
+    };
+    console.log(product2);
+    console.log(product2.name);
+    console.log(product2['name']); //braket notation
+
+    //console.log(product2.delivery - time); //errore per il -
+    console.log(product2['delivery-time']); // funziona
+
+    console.log(product2.rating.count);
+
+    product2.fun();
+
+    console.log(typeof console.log);
+
+    console.log(JSON.stringify(product2));
+    console.log(typeof JSON.stringify(product2));
+
+    const jsonString = JSON.stringify(product2);
+    console.log(JSON.parse(jsonString));
+*/
+
+
+    console.log('hello'.length); // autobox
+    console.log('hello'.toLocaleUpperCase());
+
+    const object1 = {
+      message: 'hello'
+    };
+    const object2 = object1; // copy ref
+
+    object1.message = 'good';
+    console.log(object1);
+    console.log(object2);
+
+    const object3 = {
+      message: 'good'
+    };
+
+    console.log(object3 === object1); // da falso
+    console.log(object2 === object1); // da vero perchè hanno la stessa ref
+
+    const object4 = {
+      message: 'good',
+      price: 7.99
+    };
+    //const message = object4.message;
+    const { message, price } = object4; //destructing shortcut
+    console.log(message);
+    console.log(price);
+
+
+    const object5 = {
+      //message: message
+      message, // shorthand property
+      //metodh: function foo1(){console.log('method')}
+      metodh() { console.log('method'); } // shorhand method
+    };
+
+    console.log(object5);
+    object5.metodh();
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
